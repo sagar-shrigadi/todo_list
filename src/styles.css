@@ -1,0 +1,76 @@
+body{
+    background-color: var(--clr-primary-light);
+    color: var(--clr-primary-dark);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height: 100dvh;
+}
+.header{
+    padding: 1.5rem;
+    background-color: var(--clr-primary-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+    h1 {
+        font-size: 2rem;
+        color: var(--clr-primary-light);
+    }    
+    img{
+        width: 2rem;
+    }
+}
+main{
+    .mainContainer{
+        .sidebar{
+            padding-top: 2rem;
+            padding-bottom: 1.5rem;
+            padding-inline: 1.15rem;
+            background-color: var(--clr-secondary-light);
+            .defaultContainer{
+                padding-block: 0.625rem;
+                padding-inline: 1.25rem;
+                margin-bottom: 3rem;
+                border-radius: 0.3125rem;
+                background-color: var(--clr-tertiary-light);
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 1.5rem;
+                p{
+                    font-size: 1.15rem;
+                    font-weight: bold;
+                }
+            }
+            .projectsContainer{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                gap: 0.75rem;
+                h2{
+                    font-size: 1.75rem;
+                }
+                .addProjectsContainer{
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    gap: 1rem;
+                    padding-block: 0.625rem;
+                    padding-inline: 1.25rem;
+                    p{
+                        font-size: 1.15rem;
+                    }
+                }
+            }
+        }
+    }
+}
+footer{
+    background-color: var(--clr-primary-dark);
+    color: var(--clr-primary-light);
+    text-align: center;
+    padding-block: 0.5rem;
+    p{
+        font-size: 1.125rem;
+    }
+}
