@@ -63,6 +63,26 @@ main{
                 }
             }
         }
+        .subSectionContainer{
+            padding: 1.25rem 2.5rem;
+            margin: 0 auto;
+            .projectTitle{
+                font-size: 1.75rem;
+                padding-inline: 0.625rem;
+                margin-bottom: 0.625rem;
+            }
+            .addTasksContainer{
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 1rem;
+                padding-block: 0.625rem;
+                padding-inline: 1.25rem;
+                p{
+                    font-size: 1.15rem;
+                }
+            }
+        }
     }
 }
 footer{
