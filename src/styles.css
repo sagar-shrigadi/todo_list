@@ -15,12 +15,33 @@ body{
         color: var(--clr-primary-light);
     }    
     img{
-        width: 2rem;
+        cursor: pointer;
+        width: 2.5rem;
     }
 }
+
 main{
     min-height: 83dvh;
+    
     .mainContainer{
+        input[type="checkbox"]{
+            display: none;
+        }
+
+        @media(width < 48em){
+            #sidebar:checked ~ .sidebar{
+                transform: translateX(0);
+                transition: 0.4s ease-in-out;
+            }
+
+            .sidebar{
+                position: fixed;
+                transform: translateX(-100%);
+                transition: 0.3s ease-out;
+                inset: 0 5rem 0 0;
+            }
+        }
+
         .sidebar{
             padding-top: 2rem;
             padding-bottom: 1.5rem;
@@ -85,6 +106,7 @@ main{
         }
     }
 }
+
 footer{
     background-color: var(--clr-primary-dark);
     color: var(--clr-primary-light);
