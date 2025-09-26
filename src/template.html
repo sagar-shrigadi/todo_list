@@ -37,11 +37,32 @@
             
             <article class="subSectionContainer">
                 <h2 class="projectTitle">Inbox</h2>
-                <div class="projectTasksList"></div>
-                <div class="addTasksContainer">
-                    <img src="./assets/icons/add_black.svg" alt="">
-                    <p>Add Tasks</p>
+                <div class="projectTasksList">
+                    <ul class="toDoLists"></ul>
                 </div>
+                <button class="addTasksContainer">
+                    <img src="./assets/icons/add_black.svg" alt="">
+                    Add Tasks
+                </button>
+
+                <dialog id="addTasksDialog">
+                    <form action="" class="addTasksForm">
+                        <h3>Add a task</h3>
+
+                        <div class="taskTitle">
+                            <label for="taskTitle">Add Tasks: </label>
+                            <input type="text" name="taskTitle" id="taskTitle">
+                        </div>
+                        <div class="taskDueDate">
+                            <label for="taskDueDate">Due Date: </label>
+                            <input type="date" name="taskDueDate" id="taskDueDate"> 
+                        </div>
+                        <div class="buttonContainer">
+                            <button class="cancelModal">Cancel</button>
+                            <button class="submitModal">Add</button>
+                        </div>
+                    </form>
+                </dialog>
             </article>
 
         </section>
