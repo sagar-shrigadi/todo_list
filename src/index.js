@@ -40,13 +40,15 @@ function CreateTasks(title, dueDate, isCompleted = false){
     return {
         title,
         finalDueDate,
-        isCompleted
+        isCompleted,
+        id: Date.now(),
     };
 }
 
 function taskAdditionDOM(taskToAdd){
     const toDoContainer = document.createElement("li");
     toDoContainer.classList.add("taskContainer");
+    toDoContainer.dataset.taskId = taskToAdd.id;
 
     const toDoCheckbox = document.createElement("input");
     toDoCheckbox.type = "checkbox"
@@ -61,6 +63,17 @@ function taskAdditionDOM(taskToAdd){
     const deleteImage = document.createElement("img");
     deleteImage.src = deleteImageSvg;
     toDoDeleteButton.appendChild(deleteImage);
+
+    toDoDeleteButton.addEventListener("click", ()=>{
+        const taskId = parseInt(toDoContainer.dataset.taskId);
+
+        const taskIndex = tasksArray.findIndex(task => task.id === taskId);
+        if(taskIndex !== -1){
+            tasksArray.splice(taskIndex, 1);
+        }
+
+        toDoLists.removeChild(toDoContainer);
+    });
 
     toDoContainer.append(toDoCheckbox, toDoTitle, toDoDueDate, toDoDeleteButton);
     toDoLists.appendChild(toDoContainer);
