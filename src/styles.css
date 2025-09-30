@@ -48,19 +48,19 @@ main{
             padding-inline: 1.15rem;
             background-color: var(--clr-secondary-light);
             .defaultContainer{
+                background-color: var(--clr-tertiary-light);
+                border: none;
                 padding-block: 0.625rem;
-                padding-inline: 1.25rem;
+                padding-left: 2rem;
+                padding-right: 3rem;
                 margin-bottom: 3rem;
                 border-radius: 0.3125rem;
-                background-color: var(--clr-tertiary-light);
                 display: flex;
                 justify-content: start;
                 align-items: center;
                 gap: 1.5rem;
-                p{
-                    font-size: 1.15rem;
-                    font-weight: bold;
-                }
+                font-size: 1.15rem;
+                font-weight: bold;
             }
             .projectsContainer{
                 display: flex;
@@ -71,15 +71,83 @@ main{
                 h2{
                     font-size: 1.75rem;
                 }
+                .projectsLists{
+                    .projectListsUL{
+                        padding: 0 1.25rem;
+                        .projectContainer{
+                            color: var(--clr-secondary-dark);
+                            list-style: none;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: 2rem;
+                            padding-block: 0.5rem;
+                            margin-inline: auto;
+                            p{
+                                font-size: 1.15rem;
+                            }
+                            button {
+                                cursor: pointer;
+                                border: none;
+                                background: none;
+                                padding: 0;
+                                img{
+                                    width: 1.5rem;
+                                }
+                            }
+                        }
+                    }
+                }
                 .addProjectsContainer{
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+                    color: var(--clr-primary-dark);
+                    font-size: 1.15rem;
                     display: flex;
                     justify-content: start;
                     align-items: center;
                     gap: 1rem;
                     padding-block: 0.625rem;
                     padding-inline: 1.25rem;
-                    p{
-                        font-size: 1.15rem;
+                }
+                .addProjectsDialog{
+                    background-color: var(--clr-secondary-dark);
+                    color: var(--clr-secondary-light);
+                    border: 2px solid var(--clr-primary-dark);
+                    border-radius: 0.5rem;
+                    .addProjectsForm{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: start;
+                        gap: 1.5rem;
+                        padding-inline: 1.5rem;
+                        padding-block: 1rem;
+                        h3{
+                            font-size: 1.35rem;
+                        }
+                        .addProjectsInput{
+                            border: none;
+                            border-radius: 0.25rem;
+                            padding-block: 0.25rem;
+                            padding-inline: 1rem;
+                        }
+                        .addProjectDialogButtons{
+                            margin-top: 1rem;
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            gap: 2rem;
+                            button{
+                                cursor: pointer;
+                                border: none;
+                                border-radius: 0.3rem;
+                                min-width: 5rem;
+                                padding-block: 0.4rem;
+                            }
+                        }
                     }
                 }
             }
@@ -107,6 +175,7 @@ main{
                         gap: 2rem;
                         padding-block: 0.5rem;
                         button {
+                            cursor: pointer;
                             border: none;
                             background: none;
                             padding: 0;
