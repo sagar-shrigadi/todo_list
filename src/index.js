@@ -27,13 +27,13 @@ defaultIndexProject.addEventListener("click", ()=>{
     activeProject.tasks.forEach(task => taskAdditionDOM(task));
 });
 
-const projects = [
-    {
-        id: Date.now(), name:"Inbox", tasks:[],
-    },
-];
+const projects = loadFromLocalStorage();
 let activeProject = projects[0];
 setActiveProjectUI(defaultIndexProject);
+
+projects.slice(1).forEach(project => projectAdditionDom(project));
+
+activeProject.tasks.forEach(task => taskAdditionDOM(task));
 
 addProjectsButton.addEventListener("click", ()=>{
     addProjectsModal.showModal();
@@ -51,6 +51,7 @@ addProjectsForm.addEventListener("submit", (e)=>{
     const newProjects = createProjects(projectTitle);
 
     projects.push(newProjects);
+    saveToLocalStorage();
     projectAdditionDom(newProjects);
 
     addProjectsForm.reset();
@@ -76,6 +77,7 @@ addTaskForm.addEventListener("submit", (e)=>{
     
     // tasksArray.push(newTask);
     activeProject.tasks.push(newTask);
+    saveToLocalStorage();
     taskAdditionDOM(newTask);
 
     addTaskForm.reset();
@@ -119,6 +121,7 @@ function taskAdditionDOM(taskToAdd){
         const taskIndex = activeProject.tasks.findIndex(task => task.id === taskId);
         if(taskIndex !== -1){
             activeProject.tasks.splice(taskIndex, 1);
+            saveToLocalStorage();
         }
 
         toDoLists.removeChild(toDoContainer);
@@ -162,6 +165,7 @@ function projectAdditionDom(projectToAdd){
         const projectIndex = projects.findIndex(project => project.id === projectId);
         if(projectIndex !== -1){
             projects.splice(projectIndex, 1);
+            saveToLocalStorage();
         }
 
         projectLists.removeChild(newProjectsContainer);
@@ -197,4 +201,17 @@ function setActiveProjectUI(element){
     });
 
     element.classList.add("active");
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem('todo-projects', JSON.stringify(projects));
+}
+
+function loadFromLocalStorage() {
+    const saved = localStorage.getItem('todo-projects');
+    if (saved) {
+        return JSON.parse(saved);
+    }
+
+    return [{ id: Date.now(), name: "Inbox", tasks: [] }];
 }
