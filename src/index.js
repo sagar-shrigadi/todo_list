@@ -14,6 +14,18 @@ const addProjectsModal = document.querySelector(".addProjectsDialog");
 const addProjectsForm = document.querySelector(".addProjectsForm");
 const cancelProjectsModalButton = document.querySelector(".cancelProjectsModalButton");
 const projectLists = document.querySelector(".projectListsUL");
+const h2ProjectTitle = document.querySelector(".projectTitle");
+const defaultIndexProject = document.querySelector(".defaultContainer");
+
+defaultIndexProject.addEventListener("click", ()=>{
+    setActiveProjectUI(defaultIndexProject);
+    activeProject = projects[0];
+
+    h2ProjectTitle.textContent = activeProject.name;
+    toDoLists.innerHTML = "";
+
+    activeProject.tasks.forEach(task => taskAdditionDOM(task));
+});
 
 const projects = [
     {
@@ -21,7 +33,7 @@ const projects = [
     },
 ];
 let activeProject = projects[0];
-// const tasksArray = [];
+setActiveProjectUI(defaultIndexProject);
 
 addProjectsButton.addEventListener("click", ()=>{
     addProjectsModal.showModal();
@@ -142,7 +154,9 @@ function projectAdditionDom(projectToAdd){
     deleteImage.src = deleteImageSvg;
     projectDeleteButton.appendChild(deleteImage);
 
-    projectDeleteButton.addEventListener("click", ()=>{
+    projectDeleteButton.addEventListener("click", (e)=>{
+        e.stopPropagation();
+
         const projectId = parseInt(newProjectsContainer.dataset.projectId);
 
         const projectIndex = projects.findIndex(project => project.id === projectId);
@@ -152,8 +166,35 @@ function projectAdditionDom(projectToAdd){
 
         projectLists.removeChild(newProjectsContainer);
         activeProject = projects[0];
+        setActiveProjectUI(defaultIndexProject);
+        h2ProjectTitle.textContent = activeProject.name;
+        toDoLists.innerHTML = "";
+
+        activeProject.tasks.forEach(task => taskAdditionDOM(task));
     });
 
     newProjectsContainer.append(projectNewImage, projectTitle, projectDeleteButton);
     projectLists.appendChild(newProjectsContainer);
+
+    newProjectsContainer.addEventListener("click", ()=>{
+        setActiveProjectUI(newProjectsContainer);
+        const projectId = parseInt(newProjectsContainer.dataset.projectId);
+
+        const projectIndex = projects.findIndex(project => project.id === projectId);
+        activeProject = projects[projectIndex];
+
+        h2ProjectTitle.textContent = activeProject.name;
+        toDoLists.innerHTML = "";
+
+        activeProject.tasks.forEach(task => taskAdditionDOM(task));
+    });
+}
+
+function setActiveProjectUI(element){
+
+    document.querySelectorAll(".projectContainer, .defaultContainer").forEach(el => {
+        el.classList.remove("active");
+    });
+
+    element.classList.add("active");
 }
