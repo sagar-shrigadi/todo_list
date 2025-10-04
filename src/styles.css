@@ -272,7 +272,7 @@ footer{
     }
 }
 
-@media(width > 48em){
+@media(width >= 48em){
     .mainContainer{
         display: flex;
         gap: clamp(2rem, 1.1818rem + 3.6364vw, 4rem);
