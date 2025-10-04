@@ -5,6 +5,10 @@ Features project-based task management, modals for input, responsive layout, and
 
 ---
 
+## Links
+
+- [Live Project Link](https://sagar-shrigadi.github.io/todo_list/)
+
 ## 🚀 Features
 
 - 📌 **Project Management**  
